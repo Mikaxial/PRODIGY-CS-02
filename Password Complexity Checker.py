@@ -3,38 +3,26 @@ import re
 def assess_password_strength(password):
     score = 0
     feedback = []
-
-    # Check length
     if len(password) >= 8:
         score += 1
     else:
-        feedback.append("Password should be at least 8 characters long.")
-
-    # Check for uppercase letters
+        feedback.append("Password should be at least 8 characters long.") #Check Legnth
     if re.search(r"[A-Z]", password):
         score += 1
     else:
-        feedback.append("Password should contain at least one uppercase letter.")
-
-    # Check for lowercase letters
+        feedback.append("Password should contain at least one uppercase letter.") #Check Uppercase letters
     if re.search(r"[a-z]", password):
         score += 1
     else:
-        feedback.append("Password should contain at least one lowercase letter.")
-
-    # Check for digits
+        feedback.append("Password should contain at least one lowercase letter.") #Check Lowercase letters
     if re.search(r"\d", password):
         score += 1
     else:
-        feedback.append("Password should contain at least one digit.")
-
-    # Check for special characters
+        feedback.append("Password should contain at least one digit.") #Checks digits
     if re.search(r"[!@#$%^&*(),.?\":{}|<>]", password):
         score += 1
     else:
-        feedback.append("Password should contain at least one special character (e.g., !, @, #, etc.).")
-
-    # Determine password strength
+        feedback.append("Password should contain at least one special character (e.g., !, @, #, etc.).") #Check special characters
     if score == 5:
         strength = "Very Strong"
     elif score == 4:
@@ -45,9 +33,7 @@ def assess_password_strength(password):
         strength = "Weak"
     else:
         strength = "Very Weak"
-
-    # Provide feedback
-    print(f"Password Strength: {strength}")
+    print(f"Password Strength: {strength}") #Password Stregnth
     if feedback:
         print("Suggestions to improve your password--> ")
         for suggestion in feedback:
